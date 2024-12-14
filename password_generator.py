@@ -74,7 +74,7 @@ def save():
 # define layout and loop for main window
 tab1_layout = [ [sg.Button('<your password>', button_color=('white', sg.theme_background_color()), mouseover_colors='black', border_width=0, font='"Tahoma" 16', k='result', tooltip='click to copy')],
           [sg.Text('', font='"Tahoma" 8', k='confirm')],
-          [sg.Button('Generate', font='"Tahoma" 12', border_width=2, k='go'), sg.Combo(['12','14','16','18','20'], default_value='12', k='choice', enable_events=True)],
+          [sg.Button('Generate', font='"Tahoma" 12', border_width=2, k='go'), sg.Input(k='choice', default_text='12', size=(5,1), enable_events=True)],
           [sg.Button('save to file...', font='"Tahoma" 8', border_width=0, k='save')] ]
 
 tab2_layout = [ [sg.Checkbox('uppercase letters', default=True, k='u')],
@@ -86,12 +86,22 @@ layout = [ [sg.TabGroup([[sg.Tab('generator', tab1_layout,), sg.Tab('settings', 
 
 window = sg.Window('password generator', layout, finalize=True, element_justification='left',
                    use_custom_titlebar=True, titlebar_background_color='deepskyblue3', titlebar_font='"Tahoma" 8', titlebar_text_color='White', titlebar_icon=icon_base64)
+window.bind('<Return>','go')
+window.bind('<Enter>','go')
+window.bind('<Escape>','exit')
 
 while True:
     event, values = window.read(timeout=100)
 
     if event == 'choice':
-        amount = int(values['choice'])
+        try:
+            amount = int(values['choice'])
+        except:
+            amount=0
+        print(amount)
+        if amount > 30:
+            window['choice'].update('30')
+            amount = int(values['choice'])
 
     if event == 'go':
         result=[]
@@ -141,6 +151,7 @@ while True:
     if event == 'save' and resultVar is not None:
         save()
 
-    if event in (sg.WIN_CLOSED, None):
+    if event in (sg.WIN_CLOSED, None, 'exit'):
         break
 window.close()
+os._exit(0)
