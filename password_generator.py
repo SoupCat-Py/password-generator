@@ -98,7 +98,6 @@ while True:
             amount = int(values['choice'])
         except:
             amount=0
-        print(amount)
         if amount > 30:
             window['choice'].update('30')
             amount = int(values['choice'])
