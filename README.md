@@ -5,7 +5,7 @@ this little program makes strings of random characters you can use as passwords 
 - choose how many characters you want the password to be using the dropdown menu on the right <br />
 - click the password to copy it, or save it to a txt file to use it later :D <br />
 
-press RETURN to generate (<Return> is bound to 'generate', but <Enter>) <br />
+press RETURN to generate (`Return` is bound to 'generate', but `Enter`) <br />
 press ESC to close the app <br />
 
 this does use PySimpleGUI so you'll need to install it and then get a licence to run it :/ <br />
