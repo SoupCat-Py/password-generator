@@ -87,7 +87,6 @@ layout = [ [sg.TabGroup([[sg.Tab('generator', tab1_layout,), sg.Tab('settings', 
 window = sg.Window('password generator', layout, finalize=True, element_justification='left',
                    use_custom_titlebar=True, titlebar_background_color='deepskyblue3', titlebar_font='"Tahoma" 8', titlebar_text_color='White', titlebar_icon=icon_base64)
 window.bind('<Return>','go')
-window.bind('<Enter>','go')
 window.bind('<Escape>','exit')
 
 while True:
