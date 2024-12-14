@@ -56,7 +56,8 @@ def save():
                     file.write(f'{title} \n')
                     file.write(f'{resultVar} \n')
                     file.write('-' * 40 + '\n')
-                print('saved')
+                sg.popup_no_titlebar('saved', background_color='green', text_color='white', auto_close=True, auto_close_duration=1, button_type=5)
+                dl_window.close()
             except:
                 print('could not save')
 
