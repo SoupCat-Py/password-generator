@@ -98,14 +98,17 @@ while True:
         types=[]
 
         #find which lists to choose from
-        if values['u']:
-            types.append('upper')
-        if values['l']:
-            types.append('lower')
-        if values['n']:
-            types.append('numbers')
-        if values['s']:
-            types.append('symbols')
+        if values['u'] or values['l'] or values['s'] or values['n']:
+            if values['u']:
+                types.append('upper')
+            if values['l']:
+                types.append('lower')
+            if values['n']:
+                types.append('numbers')
+            if values['s']:
+                types.append('symbols')
+        else:
+            types.append('none')
 
         #make the result list
         for i in range(amount):
@@ -118,6 +121,8 @@ while True:
                 result.append(random.choice(numbers))
             elif type == 'symbols':
                 result.append(random.choice(symbols))
+            elif type == 'none':
+                result.append('-')
         
         #prep and update
         resultVar = ''.join(result)
