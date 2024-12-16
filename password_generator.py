@@ -100,7 +100,7 @@ while True:
             amount=0
         if amount > 30:
             window['choice'].update('30')
-            amount = int(values['choice'])
+            amount = 30
 
     if event == 'go':
         result=[]
